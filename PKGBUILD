@@ -7,7 +7,7 @@ url="https://github.com/Garionion/$pkgname"
 license=('GPL')
 makedepends=('go')
 source=("main.go")
-sha256sums=('47cf4d6252a5ff3c1dfbb15ef838dee4d5c85daf9c84fa6918a9e650b8350a9f')
+sha256sums=('fd0d76d5e7d03900f9111c00a1b50f124d8ac2ee09666752bdb505ed3639c10e')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"

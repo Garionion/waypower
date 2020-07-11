@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"math"
 	"path/filepath"
 	"regexp"
 	"strconv"
@@ -13,7 +14,7 @@ import (
 func main() {
 	const searchPath = "/sys/class/power_supply"
 	var re = regexp.MustCompile(`(?ms)BAT[0-9]+`)
-	var totalPower int
+	var totalPower float64
 	var power int
 
 	files, err := ioutil.ReadDir(searchPath)
@@ -31,13 +32,13 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			totalPower += power
+			totalPower += float64(power)
 		}
 	}
 
 	//divide trough 1.000.000 to get power in Watts
 	totalPower = totalPower / 1000000
 
-	fmt.Println(totalPower, "W")
+	fmt.Println(math.Round(totalPower*100)/100, "W")
 
 }
